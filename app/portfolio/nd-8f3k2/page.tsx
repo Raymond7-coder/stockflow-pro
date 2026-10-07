@@ -44,7 +44,7 @@ const portfolio = {
 
   depositDate: "5th October 2026",
 
-  lastUpdated: "7th October 2026, 11:52 AM",
+  lastUpdated: "7th October 2026, 1:12 PM",
 
   holdings: [
     "FBN Holdings",
@@ -101,6 +101,11 @@ const portfolioHistory = [
     fullTime: "7 Oct 2026 • 11:52 AM",
     balance: 550654,
   },
+  {
+  time: "1:15 PM",
+  fullTime: "7 Oct 2026 • 1:13 PM",
+  balance: 578654,
+},
 ];
 
 /* =========================================================

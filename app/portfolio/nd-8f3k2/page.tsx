@@ -44,20 +44,40 @@ const portfolio = {
 
   depositDate: "5th October 2026",
 
-  lastUpdated: "7th October 2026, 1:27 PM",
+  lastUpdated: "7th October 2026, 1:48 PM",
 
-  holdings: [
-    "FBN Holdings",
-    "Access Bank",
-    "BUA Foods",
-    "Transcorp",
-  ],
+  allocation: [
+  {
+    name: "African Equities",
+    percent: 30,
+  },
+  {
+    name: "Fixed Income / Treasury Instruments",
+    percent: 20,
+  },
+  {
+    name: "Energy & Commodities",
+    percent: 15,
+  },
+  {
+    name: "Real Estate / REIT Exposure",
+    percent: 15,
+  },
+  {
+    name: "Digital Assets",
+    percent: 10,
+  },
+  {
+    name: "Cash / Liquidity Reserve",
+    percent: 10,
+  },
+],
 };
 
 /* =========================================================
    PORTFOLIO HISTORY
 
-   TO UPDATE ND:
+   WHEN YOU WANT TO UPDATE ND:
 
    Add a new object at the bottom.
 
@@ -69,10 +89,8 @@ const portfolio = {
      balance: 565000,
    },
 
-   THAT'S IT.
-
-   Green/red chart movements and calculations happen
-   automatically.
+   The chart, growth, return, movement and activity
+   calculate automatically.
    ========================================================= */
 
 const portfolioHistory = [
@@ -102,15 +120,20 @@ const portfolioHistory = [
     balance: 550654,
   },
   {
-  time: "1:15 PM",
-  fullTime: "7 Oct 2026 • 1:13 PM",
-  balance: 578654,
-},
-{
-  time: "1:27 PM",
-  fullTime: "7 Oct 2026 • 1:27 PM",
-  balance: 558000,
-},
+    time: "1:15 PM",
+    fullTime: "7 Oct 2026 • 1:13 PM",
+    balance: 578654,
+  },
+  {
+    time: "1:27 PM",
+    fullTime: "7 Oct 2026 • 1:27 PM",
+    balance: 558000,
+  },
+  {
+    time: "1:48 PM",
+    fullTime: "7 Oct 2026 • 1:48 PM",
+    balance: 588700,
+  },
 ];
 
 /* =========================================================
@@ -144,8 +167,6 @@ const currentMovementPositive =
 
 /* =========================================================
    DYNAMIC RED / GREEN CHART SEGMENTS
-
-   Every movement gets its own line automatically.
    ========================================================= */
 
 const segments = portfolioHistory
@@ -155,8 +176,7 @@ const segments = portfolioHistory
 
     return {
       key: `segment${index}`,
-      positive:
-        next.balance >= item.balance,
+      positive: next.balance >= item.balance,
     };
   });
 
@@ -183,16 +203,13 @@ const chartData = portfolioHistory.map(
 
 /* =========================================================
    DYNAMIC ACTIVITY
-
-   Generated directly from portfolioHistory.
    ========================================================= */
 
 const recentActivity = [
   ...portfolioHistory
     .slice(1)
     .map((item, index) => {
-      const previous =
-        portfolioHistory[index];
+      const previous = portfolioHistory[index];
 
       const difference =
         item.balance - previous.balance;
@@ -290,7 +307,6 @@ export default function NDPortfolioPage() {
 
       {/* NAVBAR */}
       <header className="sticky top-0 z-40 border-b border-[#172a42] bg-[#0b1a2e]/95 backdrop-blur-xl">
-
         <div className="mx-auto flex h-[72px] max-w-[1240px] items-center justify-between px-5 sm:px-6">
 
           <div className="flex items-center gap-3">
@@ -318,7 +334,6 @@ export default function NDPortfolioPage() {
               className="hidden items-center gap-2 text-xs text-slate-400 transition hover:text-white sm:flex"
             >
               <Eye size={14} />
-
               Viewing Notice
             </button>
 
@@ -332,7 +347,6 @@ export default function NDPortfolioPage() {
           </div>
 
         </div>
-
       </header>
 
       <div className="mx-auto max-w-[1240px] px-5 py-8 sm:px-6">
@@ -397,17 +411,13 @@ export default function NDPortfolioPage() {
                 )}
 
                 <span className="text-lg font-bold">
-
                   {currentMovementPositive
                     ? "+"
                     : "-"}
 
                   {formatNaira(
-                    Math.abs(
-                      currentMovement
-                    )
+                    Math.abs(currentMovement)
                   )}
-
                 </span>
 
               </div>
@@ -459,12 +469,8 @@ export default function NDPortfolioPage() {
             value={`${growthPercent >= 0 ? "+" : ""}${growthPercent.toFixed(
               2
             )}%`}
-            positive={
-              growthPercent >= 0
-            }
-            negative={
-              growthPercent < 0
-            }
+            positive={growthPercent >= 0}
+            negative={growthPercent < 0}
           />
 
         </section>
@@ -506,10 +512,7 @@ export default function NDPortfolioPage() {
                     ? "+"
                     : ""}
 
-                  {growthPercent.toFixed(
-                    2
-                  )}
-                  %
+                  {growthPercent.toFixed(2)}%
                 </p>
 
               </div>
@@ -546,9 +549,7 @@ export default function NDPortfolioPage() {
                       <stop
                         offset="0%"
                         stopColor="#10b981"
-                        stopOpacity={
-                          0.2
-                        }
+                        stopOpacity={0.2}
                       />
 
                       <stop
@@ -588,12 +589,9 @@ export default function NDPortfolioPage() {
                     }}
                     axisLine={false}
                     tickLine={false}
-                    tickFormatter={(
-                      value
-                    ) =>
+                    tickFormatter={(value) =>
                       `₦${Math.round(
-                        value /
-                          1000
+                        value / 1000
                       )}k`
                     }
                   />
@@ -603,8 +601,7 @@ export default function NDPortfolioPage() {
                       <CustomTooltip />
                     }
                     cursor={{
-                      stroke:
-                        "#475569",
+                      stroke: "#475569",
                       strokeDasharray:
                         "4 4",
                     }}
@@ -623,30 +620,18 @@ export default function NDPortfolioPage() {
                     (segment) => (
 
                       <Line
-                        key={
-                          segment.key
-                        }
+                        key={segment.key}
                         type="linear"
-                        dataKey={
-                          segment.key
-                        }
+                        dataKey={segment.key}
                         stroke={
                           segment.positive
                             ? "#10b981"
                             : "#ef4444"
                         }
-                        strokeWidth={
-                          3
-                        }
-                        dot={
-                          false
-                        }
-                        connectNulls={
-                          false
-                        }
-                        isAnimationActive={
-                          true
-                        }
+                        strokeWidth={3}
+                        dot={false}
+                        connectNulls={false}
+                        isAnimationActive={true}
                       />
 
                     )
@@ -659,37 +644,23 @@ export default function NDPortfolioPage() {
                       index
                     ) => {
 
-                      if (
-                        index ===
-                        0
-                      ) {
+                      if (index === 0) {
                         return (
                           <ReferenceDot
-                            key={
-                              item.fullTime
-                            }
-                            x={
-                              item.time
-                            }
-                            y={
-                              item.balance
-                            }
-                            r={
-                              4
-                            }
+                            key={item.fullTime}
+                            x={item.time}
+                            y={item.balance}
+                            r={4}
                             fill="#3b82f6"
                             stroke="#bfdbfe"
-                            strokeWidth={
-                              1
-                            }
+                            strokeWidth={1}
                           />
                         );
                       }
 
                       const previous =
                         portfolioHistory[
-                          index -
-                            1
+                          index - 1
                         ];
 
                       const positive =
@@ -698,20 +669,13 @@ export default function NDPortfolioPage() {
 
                       const isLatest =
                         index ===
-                        portfolioHistory.length -
-                          1;
+                        portfolioHistory.length - 1;
 
                       return (
                         <ReferenceDot
-                          key={
-                            item.fullTime
-                          }
-                          x={
-                            item.time
-                          }
-                          y={
-                            item.balance
-                          }
+                          key={item.fullTime}
+                          x={item.time}
+                          y={item.balance}
                           r={
                             isLatest
                               ? 7
@@ -746,16 +710,12 @@ export default function NDPortfolioPage() {
             <div className="mt-4 flex flex-wrap items-center gap-5 border-t border-[#1c3049] pt-4 text-xs">
 
               <div className="flex items-center gap-2 text-emerald-400">
-
                 <span className="h-2 w-2 rounded-full bg-emerald-400" />
-
                 Increase
               </div>
 
               <div className="flex items-center gap-2 text-red-400">
-
                 <span className="h-2 w-2 rounded-full bg-red-400" />
-
                 Decrease
               </div>
 
@@ -817,16 +777,10 @@ export default function NDPortfolioPage() {
               <InfoRow
                 label="Net Growth"
                 value={`${netGrowth >= 0 ? "+" : "-"}${formatNaira(
-                  Math.abs(
-                    netGrowth
-                  )
+                  Math.abs(netGrowth)
                 )}`}
-                positive={
-                  netGrowth >= 0
-                }
-                negative={
-                  netGrowth < 0
-                }
+                positive={netGrowth >= 0}
+                negative={netGrowth < 0}
               />
 
               <InfoRow
@@ -835,64 +789,101 @@ export default function NDPortfolioPage() {
                   2
                 )}%`}
                 positive={
-                  growthPercent >=
-                  0
+                  growthPercent >= 0
                 }
                 negative={
-                  growthPercent <
-                  0
+                  growthPercent < 0
                 }
               />
 
               <InfoRow
                 label="Portfolio Status"
                 value={
-                  currentMovement >
-                  0
+                  currentMovement > 0
                     ? "Increasing"
-                    : currentMovement <
-                      0
+                    : currentMovement < 0
                     ? "Decreasing"
                     : "Stable"
                 }
                 positive={
-                  currentMovement >
-                  0
+                  currentMovement > 0
                 }
                 negative={
-                  currentMovement <
-                  0
+                  currentMovement < 0
                 }
               />
 
             </div>
 
+            {/* PORTFOLIO ALLOCATION */}
             <div className="mt-8">
 
-              <p className="mb-3 text-xs uppercase tracking-[0.12em] text-slate-500">
-                Active Holdings
-              </p>
+              <div className="mb-5 flex items-center justify-between">
 
-              <div className="flex flex-wrap gap-2">
+                <div>
 
-                {portfolio.holdings.map(
-                  (
-                    holding
-                  ) => (
+                  <p className="text-xs uppercase tracking-[0.12em] text-slate-500">
+                    Portfolio Allocation
+                  </p>
 
-                    <span
-                      key={
-                        holding
-                      }
-                      className="rounded-full border border-[#2a4767] bg-[#18324f] px-3 py-1.5 text-xs text-slate-300"
-                    >
-                      {
-                        holding
-                      }
-                    </span>
+                  <p className="mt-1 text-[11px] text-slate-600">
+                    Current exposure by investment category
+                  </p>
+
+                </div>
+
+                <span className="rounded-full border border-blue-500/20 bg-blue-500/10 px-2.5 py-1 text-[10px] font-medium text-blue-400">
+                  MULTI-ASSET
+                </span>
+
+              </div>
+
+              <div className="space-y-4">
+
+                {portfolio.allocation.map(
+                  (item) => (
+
+                    <div key={item.name}>
+
+                      <div className="mb-2 flex items-center justify-between gap-4">
+
+                        <span className="text-xs text-slate-300">
+                          {item.name}
+                        </span>
+
+                        <span className="text-xs font-semibold text-white">
+                          {item.percent}%
+                        </span>
+
+                      </div>
+
+                      <div className="h-2 overflow-hidden rounded-full bg-[#091827]">
+
+                        <div
+                          className="h-full rounded-full bg-blue-500 transition-all duration-700"
+                          style={{
+                            width: `${item.percent}%`,
+                          }}
+                        />
+
+                      </div>
+
+                    </div>
 
                   )
                 )}
+
+              </div>
+
+              <div className="mt-5 flex items-center justify-between border-t border-[#1b314a] pt-4">
+
+                <span className="text-xs text-slate-500">
+                  Total allocation
+                </span>
+
+                <span className="text-xs font-semibold text-emerald-400">
+                  100%
+                </span>
 
               </div>
 
@@ -921,14 +912,10 @@ export default function NDPortfolioPage() {
 
             <div className="flex items-center gap-2 text-xs text-slate-500">
 
-              <Clock3
-                size={14}
-              />
+              <Clock3 size={14} />
 
               Updated{" "}
-              {
-                portfolio.lastUpdated
-              }
+              {portfolio.lastUpdated}
 
             </div>
 
@@ -945,13 +932,11 @@ export default function NDPortfolioPage() {
                 ) => {
 
                   const absoluteIndex =
-                    index +
-                    1;
+                    index + 1;
 
                   const previous =
                     portfolioHistory[
-                      absoluteIndex -
-                        1
+                      absoluteIndex - 1
                     ];
 
                   const difference =
@@ -959,21 +944,16 @@ export default function NDPortfolioPage() {
                     previous.balance;
 
                   const positive =
-                    difference >=
-                    0;
+                    difference >= 0;
 
                   return (
                     <div
-                      key={
-                        item.fullTime
-                      }
+                      key={item.fullTime}
                       className="rounded-xl border border-[#1b3551] bg-[#0c1c31] p-4 transition hover:border-[#2b4d70]"
                     >
 
                       <p className="text-xs text-slate-500">
-                        {
-                          item.time
-                        }
+                        {item.time}
                       </p>
 
                       <p className="mt-2 text-xl font-bold">
@@ -992,15 +972,11 @@ export default function NDPortfolioPage() {
 
                         {positive ? (
                           <TrendingUp
-                            size={
-                              14
-                            }
+                            size={14}
                           />
                         ) : (
                           <TrendingDown
-                            size={
-                              14
-                            }
+                            size={14}
                           />
                         )}
 
@@ -1025,9 +1001,10 @@ export default function NDPortfolioPage() {
 
         </section>
 
-        {/* ACTIVITY */}
+        {/* ACTIVITY + WITHDRAWALS */}
         <section className="mt-6 grid gap-6 lg:grid-cols-2">
 
+          {/* ACTIVITY */}
           <div className="rounded-2xl border border-[#1c3049] bg-[#102139] p-5 shadow-xl shadow-black/10 sm:p-6">
 
             <div className="flex items-center justify-between">
@@ -1067,21 +1044,15 @@ export default function NDPortfolioPage() {
                     <div className="min-w-0">
 
                       <p className="text-sm font-medium">
-                        {
-                          activity.title
-                        }
+                        {activity.title}
                       </p>
 
                       <p className="mt-1 text-xs text-slate-500">
-                        {
-                          activity.description
-                        }
+                        {activity.description}
                       </p>
 
                       <p className="mt-1 text-[11px] text-slate-600">
-                        {
-                          activity.date
-                        }
+                        {activity.date}
                       </p>
 
                     </div>
@@ -1137,9 +1108,7 @@ export default function NDPortfolioPage() {
 
               <div className="flex h-14 w-14 items-center justify-center rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-400">
 
-                <Wallet
-                  size={22}
-                />
+                <Wallet size={22} />
 
               </div>
 
@@ -1157,7 +1126,7 @@ export default function NDPortfolioPage() {
 
         </section>
 
-        {/* NOTICE */}
+        {/* BOTTOM NOTICE */}
         <section className="mt-6 rounded-xl border border-[#172c44] bg-[#0b1a2d] px-5 py-4">
 
           <div className="flex items-start gap-3">
@@ -1179,7 +1148,7 @@ export default function NDPortfolioPage() {
 
       </div>
 
-      {/* POPUP */}
+      {/* VIEWING NOTICE POPUP */}
       {showNotice && (
 
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4 backdrop-blur-md">
@@ -1187,9 +1156,7 @@ export default function NDPortfolioPage() {
           <div className="relative w-full max-w-md rounded-2xl border border-[#284460] bg-[#10213a] p-7 shadow-2xl shadow-black/40">
 
             <button
-              onClick={
-                closeNotice
-              }
+              onClick={closeNotice}
               className="absolute right-4 top-4 text-slate-500 transition hover:text-white"
             >
 
@@ -1220,9 +1187,7 @@ export default function NDPortfolioPage() {
             </p>
 
             <button
-              onClick={
-                closeNotice
-              }
+              onClick={closeNotice}
               className="mt-6 w-full rounded-xl bg-blue-500 py-3 text-sm font-semibold text-white transition hover:bg-blue-400"
             >
               Continue to Dashboard

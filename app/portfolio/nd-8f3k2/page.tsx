@@ -44,7 +44,7 @@ const portfolio = {
 
   depositDate: "5th October 2026",
 
-  lastUpdated: "7th October 2026, 1:48 PM",
+  lastUpdated: "7th October 2026, 2:19 PM",
 
   allocation: [
   {
@@ -65,7 +65,7 @@ const portfolio = {
   },
   {
     name: "Digital Assets",
-    percent: 10,
+    percent: 14,
   },
   {
     name: "Cash / Liquidity Reserve",
@@ -133,6 +133,11 @@ const portfolioHistory = [
     time: "1:48 PM",
     fullTime: "7 Oct 2026 • 1:48 PM",
     balance: 588700,
+  },
+  {
+    time: "1:48 PM",
+    fullTime: "7 Oct 2026 • 2:19 PM",
+    balance: 592300,
   },
 ];
 

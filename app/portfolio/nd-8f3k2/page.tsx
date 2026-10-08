@@ -134,7 +134,7 @@ const portfolioHistory = [
     balance: 558000,
   },
   {
-    time: "8:45 AM",
+    time: "8:45 PM",
     fullTime: "7 Oct 2026 • 8:45 PM",
     balance: 1080000,
     capitalAdded: 500000,
@@ -231,7 +231,7 @@ const chartData = portfolioHistory.map(
   (item, pointIndex) => {
     const row: Record<
       string,
-      string | number | null
+      string | number | null | undefined
     > = {
       ...item,
     };

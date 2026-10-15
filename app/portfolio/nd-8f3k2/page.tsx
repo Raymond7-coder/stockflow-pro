@@ -155,73 +155,61 @@ const portfolioHistory = [
   fullTime: "13 Oct 2026 • 5:02 PM",
   balance: 1172270,
 },
-];
 {
   time: "13 Oct",
   fullTime: "13 Oct 2026 • 8:37 PM",
   balance: 1495400,
 },
-];
 {
   time: "13 Oct",
   fullTime: "13 Oct 2026 • 9:50 PM",
   balance: 1270000,
-},
-];
+},;
 {
   time: "13 Oct",
   fullTime: "13 Oct 2026 • 11:22 PM",
   balance: 1322200,
 },
-];
 {
   time: "14 Oct",
   fullTime: "14 Oct 2026 • 2:02 AM",
   balance: 1250020,
 },
-];
 {
   time: "14 Oct",
   fullTime: "14 Oct 2026 • 2:36 AM",
   balance: 1613530,
 },
-];
 {
   time: "14 Oct",
   fullTime: "14 Oct 2026 • 3:22 AM",
   balance: 1213050,
 },
-];
 {
   time: "14 Oct",
   fullTime: "14 Oct 2026 • 3:47 AM",
   balance: 1192400,
 },
-];
 {
   time: "14 Oct",
   fullTime: "14 Oct 2026 • 5:09 AM",
   balance: 1072370,
 },
-];
 {
   time: "15 Oct",
   fullTime: "15 Oct 2026 • 3:30 AM",
   balance: 902105,
 },
-];
 {
   time: "15 Oct",
   fullTime: "15 Oct 2026 • 5:02 AM",
   balance: 844280,
 },
-];
 {
   time: "15 Oct",
   fullTime: "15 Oct 2026 • 2:47 PM",
   balance: 1362900,
 },
-];
 {
   time: "15 Oct",
   fullTime: "15 Oct 2026 • 8:20 PM",

@@ -47,7 +47,7 @@ const portfolio = {
     },
   ],
 
-  lastUpdated: "12th October 2026, 6:25 AM",
+  lastUpdated: "15th October 2026, 7:02 PM",
 
   allocation: [
     {
@@ -148,6 +148,12 @@ const portfolioHistory = [
   time: "12 Oct",
   fullTime: "12 Oct 2026 • 6:25 AM",
   balance: 1395000,
+},
+];
+{
+  time: "15 Oct",
+  fullTime: "15 Oct 2026 • 7:02 PM",
+  balance: 1172270,
 },
 ];
 

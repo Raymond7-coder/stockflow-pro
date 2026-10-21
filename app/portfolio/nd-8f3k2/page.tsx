@@ -216,7 +216,7 @@ const portfolioHistory = [
   },
   {
   time: "16 Oct",
-  fullTime: "16 Oct 2026 • 4:27 AM",
+  fullTime: "16 Oct 2026 • 1:30 AM",
   balance: 1076520,
   },
   {

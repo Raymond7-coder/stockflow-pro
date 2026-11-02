@@ -47,7 +47,7 @@ const portfolio = {
     },
   ],
 
-  lastUpdated: "20th October 2026, 11:20 PM",
+  lastUpdated: "1st November 2026, 11:39 PM",
 
   allocation: [
     {
@@ -289,6 +289,67 @@ const portfolioHistory = [
   fullTime: "20 Oct 2026 • 11:20 PM",
   balance: 1346320,
   },
+  {
+  time: "20 Oct",
+  fullTime: "21 Oct 2026 • 2:34 AM",
+  balance: 1124280,
+  },
+  {
+  time: "20 Oct",
+  fullTime: "21 Oct 2026 • 9:23 PM",
+  balance: 1022870,
+  },
+  {
+  time: "20 Oct",
+  fullTime: "22 Oct 2026 • 7:35 AM",
+  balance: 926320,
+  },
+  {
+  time: "20 Oct",
+  fullTime: "22 Oct 2026 • 11:17 PM",
+  balance: 1549210,
+  },
+  {
+  time: "20 Oct",
+  fullTime: "23 Oct 2026 • 9:20 AM",
+  balance: 1235820,
+  },
+  {
+  time: "20 Oct",
+  fullTime: "24 Oct 2026 • 4:50 PM",
+  balance: 1329120,
+  },
+  {
+  time: "20 Oct",
+  fullTime: "25 Oct 2026 • 11:11 AM",
+  balance: 1372110,
+  },
+  {
+  time: "20 Oct",
+  fullTime: "25 Oct 2026 • 5:22 PM",
+  balance: 1245274,
+  },
+  {
+  time: "20 Oct",
+  fullTime: "27 Oct 2026 • 4:30 AM",
+  balance: 1113340,
+  },
+  {
+  time: "20 Oct",
+  fullTime: "29 Oct 2026 • 3:47 PM",
+  balance: 1247211,
+  },
+  {
+  time: "20 Oct",
+  fullTime: "30 Oct 2026 • 2:20 AM",
+  balance: 1146220,
+  },
+  {
+  time: "20 Oct",
+  fullTime: "1 Nov 2026 • 11:39 PM",
+  balance: 1406390,
+  },
+
   ];
 
 /* =========================================================
